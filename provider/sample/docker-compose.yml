@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  sample_provider:
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: sample_provider
+    volumes:
+      - .:/go/src/github.com/synerex/provider/sample
+    ports:
+      - "8443:8443"
+    networks: 
+      - synerex_net
+      - default
+networks:
+  synerex_net:
+    external: true
